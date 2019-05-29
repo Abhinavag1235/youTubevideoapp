@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:onClick="onClick"
+    android:background="@drawable/k"
+    >
+
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="sans-serif-black"
+        android:text="Fox Digital"
+        android:textColor="#fff"
+        android:textSize="60sp"
+        android:layout_centerVertical="true" />
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="sans-serif-black"
+        android:text="Welcome to"
+        android:textColor="#fff"
+        android:textSize="30sp"
+        android:layout_above="@+id/tv2"
+        />
+
+</RelativeLayout>
