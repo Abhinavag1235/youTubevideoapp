@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.app.toyo.youtubevideosapp"
-    android:installLocation="preferExternal">
-
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
+          package="com.brainberry.foxdigital">
 
     <application
         android:allowBackup="true"
@@ -15,17 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        tools:replace="android:value"
-        <activity android:name=".MainActivity">
+        <activity android:name=".DeleteVideoActivity">
+        </activity>
+        <activity android:name=".AddVideoActivity">
+        </activity>
+        <activity android:name=".AuthenticationActivity">
+        </activity>
+        <activity android:name=".FoxActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".UpdateDatabase" />
-        <activity android:name=".Authentication" />
-        <activity android:name=".Fox"></activity>
+        <activity android:name=".SplashActivity">
+
+        </activity>
     </application>
 
 </manifest>
