@@ -6,27 +6,24 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_authentication.*
 
 class AuthenticationActivity : AppCompatActivity() {
-    lateinit var user: EditText
-    lateinit var pass: EditText
-    private var nextActivity: Int = 0
+    private var nextActivity: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_authentication)
-        user = findViewById(R.id.username)
-        pass = findViewById(R.id.password)
+        // This value is sent from FoxAcivity, which determines post auth, which activity will launch
         nextActivity = intent.getIntExtra("nextActivity", -1)
-
     }
 
-    fun Submit(@Suppress("UNUSED_PARAMETER") view: View) {
-        val users = user.text.toString()
-        val passs = pass.text.toString()
-        if (users == "Brainberry" && passs == "12345") {
+    fun submit(@Suppress("UNUSED_PARAMETER") view: View) {
+        if (editTextUsername.text.toString() == "Brainberry"
+            && editTextPassword.text.toString() == "12345") {
 
             Toast.makeText(this, "Logged In Successfully", Toast.LENGTH_SHORT).show()
+
             val intent: Intent
             if (nextActivity == FoxActivity.LAUNCH_ADD_VIDEO) {
                 intent = Intent(this, AddVideoActivity::class.java)
@@ -38,7 +35,5 @@ class AuthenticationActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Invalid Username or Password", Toast.LENGTH_SHORT).show()
         }
-
-
     }
 }
