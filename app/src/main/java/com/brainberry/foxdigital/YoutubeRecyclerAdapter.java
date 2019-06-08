@@ -49,13 +49,13 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
         this.mYoutubeVideos = youtubeVideos;
         this.context = context;
     }
-
+    //overriding onCreateViewHolder to inflate blog_row.xml file for recyclerview
     @NonNull
     @Override
     public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.blog_row, parent, false));
     }
-
+    // overriding onBindViewHolder to bind the holder objects to positions
     @Override
     public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
         holder.onBind(position);
@@ -66,7 +66,7 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
     public int getItemViewType(int position) {
         return VIEW_TYPE_NORMAL;
     }
-
+    // returnring the size of Arraylist to create blocks in recyclerview
     @Override
     public int getItemCount() {
         if (mYoutubeVideos != null && mYoutubeVideos.size() > 0) {
@@ -77,6 +77,7 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
     }
 
     public class ViewHolder extends BaseViewHolder {
+        //matching components of activity with holder
         @BindView(R.id.textViewTitle)
         TextView textWaveTitle;
         @BindView(R.id.btnPlay)
@@ -96,7 +97,7 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
         @BindView(R.id.textViewOfferLink)
         TextView textViewOfferLink;
 
-
+        //injecting item view into recylerview using butterknife library
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -109,26 +110,30 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
         public void onBind(int position) {
             super.onBind(position);
             final YoutubeVideo mYoutubeVideo = mYoutubeVideos.get(position);
-            
+            //getting view's component for data displaying
             ((Activity) itemView.getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
             int width = displayMetrics.widthPixels;
+            //setting title
             if (mYoutubeVideo.getTitle() != null)
                 textWaveTitle.setText(mYoutubeVideo.getTitle());
-
+            //Using glide library to set the thumbnail for video
             if (mYoutubeVideo.getImageUrl() != null) {
                 Glide.with(itemView.getContext())
                         .load(mYoutubeVideo.getImageUrl()).
                         apply(new RequestOptions().override(width - 36, 200))
                         .into(imageViewItems);
             }
+            //showing thumbnail and play button
             imageViewItems.setVisibility(View.VISIBLE);
             playButton.setVisibility(View.VISIBLE);
             youTubePlayerView.setVisibility(View.GONE);
 
             playButton.setOnClickListener(view -> {
+                //showing youtube player
                 imageViewItems.setVisibility(View.GONE);
                 youTubePlayerView.setVisibility(View.VISIBLE);
                 playButton.setVisibility(View.GONE);
+                //playing vedio after getting link
                 youTubePlayerView.initialize(initializedYouTubePlayer -> initializedYouTubePlayer.addListener(new AbstractYouTubePlayerListener() {
                     @Override
                     public void onReady() {
