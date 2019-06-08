@@ -28,9 +28,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="f8fdff" />
-                            <entry key="outputName" value="ic_exit_to_app_black_24dp" />
-                            <entry key="sourceFile" value="$PROJECT_DIR$/.." />
+                            <entry key="outputName" value="ic_foxdigital_logo_round" />
+                            <entry key="sourceFile" value="$PROJECT_DIR$/../Desktop/foxdigital_logo_round.svg" />
                           </map>
                         </option>
                       </PersistentState>
