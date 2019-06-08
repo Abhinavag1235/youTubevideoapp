@@ -25,6 +25,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
+ * This adapter is used by FoxActivity to display all the videos.
+ * 
  * @author Abhinav Agarwal
  * @author Shayak Banerjee
  * @version 0.2
@@ -33,7 +35,7 @@ import butterknife.ButterKnife;
 public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
 
-    public static final int VIEW_TYPE_NORMAL = 1;
+    private static final int VIEW_TYPE_NORMAL = 1;
 
     private Context context;
     private List<YoutubeVideo> mYoutubeVideos;
@@ -45,7 +47,7 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
      * @param context The Activity in which the recycler view exists
      * @param youtubeVideos list of YouTube videos
      */
-    public YoutubeRecyclerAdapter(List<YoutubeVideo> youtubeVideos, Context context ) {
+    YoutubeRecyclerAdapter(List<YoutubeVideo> youtubeVideos, Context context) {
         this.mYoutubeVideos = youtubeVideos;
         this.context = context;
     }
@@ -66,7 +68,11 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
     public int getItemViewType(int position) {
         return VIEW_TYPE_NORMAL;
     }
-    // returnring the size of Arraylist to create blocks in recyclerview
+
+    /**
+     * determines and returns the size of item count of the recycler view
+     * @return size of arraylist to fill the recycler view
+     */
     @Override
     public int getItemCount() {
         if (mYoutubeVideos != null && mYoutubeVideos.size() > 0) {
@@ -98,13 +104,14 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
         TextView textViewOfferLink;
 
         //injecting item view into recylerview using butterknife library
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
+        @Override
         protected void clear() {
-
+            // do nothing
         }
 
         public void onBind(int position) {
@@ -137,7 +144,6 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
                 youTubePlayerView.initialize(initializedYouTubePlayer -> initializedYouTubePlayer.addListener(new AbstractYouTubePlayerListener() {
                     @Override
                     public void onReady() {
-                        String id = mYoutubeVideo.getVideoId();
                         initializedYouTubePlayer.loadVideo(mYoutubeVideo.getVideoId(), 0);
                     }
                 }), true);
