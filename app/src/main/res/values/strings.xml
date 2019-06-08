@@ -14,4 +14,10 @@
     <string name="link_2">link 2</string>
     <string name="offer_link">offerLink link</string>
     <string name="delete_videos">Delete videos</string>
+    <string name="foxdigital_email">foxdigital@brainberry.com</string>
+    <string name="logout">logout</string>
+    <string name="group_clip_art">Group clip art</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
 </resources>
