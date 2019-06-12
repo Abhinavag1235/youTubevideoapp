@@ -85,7 +85,7 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
     public class ViewHolder extends BaseViewHolder {
         //matching components of activity with holder
         @BindView(R.id.textViewTitle)
-        TextView textWaveTitle;
+        TextView textViewTitle;
         @BindView(R.id.btnPlay)
         ImageView playButton;
         @BindView(R.id.imageViewItem)
@@ -100,8 +100,8 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
         TextView textViewLink1;
         @BindView(R.id.link2)
         TextView textViewLink2;
-        @BindView(R.id.textViewOfferLink)
-        TextView textViewOfferLink;
+        @BindView(R.id.textViewPayout)
+        TextView textViewPayout;
 
         //injecting item view into recylerview using butterknife library
         ViewHolder(View itemView) {
@@ -122,13 +122,20 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
             int width = displayMetrics.widthPixels;
             //setting title
             if (mYoutubeVideo.getTitle() != null)
-                textWaveTitle.setText(mYoutubeVideo.getTitle());
+                textViewTitle.setText(mYoutubeVideo.getTitle());
             //Using glide library to set the thumbnail for video
             if (mYoutubeVideo.getImageUrl() != null) {
                 Glide.with(itemView.getContext())
                         .load(mYoutubeVideo.getImageUrl()).
                         apply(new RequestOptions().override(width - 36, 200))
                         .into(imageViewItems);
+            }
+            // setting the payout amount : payout is not shown if it is 0
+            if(mYoutubeVideo.getPayout().equals("0")){
+               textViewPayout.setVisibility(View.GONE);
+            } else {
+                String text = "Payout Rs." + mYoutubeVideo.getPayout();
+                textViewPayout.setText(text);
             }
             //showing thumbnail and play button
             imageViewItems.setVisibility(View.VISIBLE);
@@ -140,7 +147,7 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
                 imageViewItems.setVisibility(View.GONE);
                 youTubePlayerView.setVisibility(View.VISIBLE);
                 playButton.setVisibility(View.GONE);
-                //playing vedio after getting link
+                //playing video after getting link
                 youTubePlayerView.initialize(initializedYouTubePlayer -> initializedYouTubePlayer.addListener(new AbstractYouTubePlayerListener() {
                     @Override
                     public void onReady() {
@@ -182,16 +189,13 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
             }
 
             /*
-             * The offer editTextVideoLink, link1 and link2 lengths are dynamically shortened when the number of characters is more
+             * The editTextVideoLink, link1 and link2 lengths are dynamically shortened when the number of characters is more
              * than 33. Also, '...' is added to the end of the shortened editTextVideoLink.
              */
-            String offerLink = mYoutubeVideo.getOfferLink();
+
             String link1 = mYoutubeVideo.getLink1();
             String link2 = mYoutubeVideo.getLink2();
 
-            if(offerLink.length() > 33){
-                offerLink = offerLink.substring(0, 29) + "...";
-            }
             if(link1.length() > 33){
                 link1 = link1.substring(0, 29) + "...";
             }
@@ -199,7 +203,7 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
                 link2 = link2.substring(0, 29) + "...";
             }
 
-            textViewOfferLink.setText(offerLink);
+
             textViewLink2.setText(link2);
             textViewLink1.setText(link1);
 
@@ -214,13 +218,6 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
             textViewLink2.setOnClickListener(v -> {
                 Intent openUrl = new Intent(Intent.ACTION_VIEW);
                 openUrl.setData(Uri.parse(mYoutubeVideo.getLink2()));
-                context.startActivity(openUrl);
-            });
-
-            // textViewOfferLink is a clickable textView, which will launch link1 in the installed browser
-            textViewOfferLink.setOnClickListener(v -> {
-                Intent openUrl = new Intent(Intent.ACTION_VIEW);
-                openUrl.setData(Uri.parse(mYoutubeVideo.getOfferLink()));
                 context.startActivity(openUrl);
             });
         }

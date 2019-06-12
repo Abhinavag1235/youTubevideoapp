@@ -1,7 +1,7 @@
 package com.brainberry.foxdigital
 
 /**
- * This class contains details of the YouTube videos *
+ * This class contains details of the YouTube videos
  *
  * @author Shayak Banerjee
  * @version 0.2
@@ -12,7 +12,7 @@ data class YoutubeVideo(
     var videoId: String?,
     var imageUrl: String?,
     var description: String?,
-    var offerLink: String?,
+    var payout: String?,
     var link1: String?,
     var link2: String?
 ) {
@@ -22,7 +22,6 @@ data class YoutubeVideo(
                 || videoId!!.isEmpty()
                 || imageUrl!!.isEmpty()
                 || description!!.isEmpty()
-                || offerLink!!.isEmpty()
                 || link1!!.isEmpty()
                 || link2!!.isEmpty())
     }

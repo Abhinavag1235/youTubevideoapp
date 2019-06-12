@@ -68,13 +68,13 @@ class AddVideoActivity : AppCompatActivity() {
                 videoId.trim { it <= ' ' },
                 thumbnailLink,
                 editTextDescription.text.toString().trim { it <= ' ' },
-                editTextOfferLink.text.toString().trim { it <= ' ' },
+                editTextPayout.text.toString().trim { it <= ' ' },
                 editTextLink1.text.toString().trim { it <= ' ' },
                 editTextLink2.text.toString().trim { it <= ' ' })
 
             // if any required data is missing, i.e., if there is an empty field
             if (youtubeVideo.emptyFieldExists())
-                Toast.makeText(this, "please fill all fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "please fill all required fields", Toast.LENGTH_SHORT).show()
             else {
 
                 val dataUpdateWasSuccessful = booleanArrayOf(true)
@@ -84,7 +84,7 @@ class AddVideoActivity : AppCompatActivity() {
                 taskMap["videoId"] = youtubeVideo.videoId!!
                 taskMap["thumbnailLink"] = youtubeVideo.imageUrl!!
                 taskMap["description"] = youtubeVideo.description!!
-                taskMap["offerLink"] = youtubeVideo.offerLink!!
+                taskMap["payout"] = youtubeVideo.payout!!
                 taskMap["link1"] = youtubeVideo.link1!!
                 taskMap["link2"] = youtubeVideo.link2!!
                 databaseReference.child(videoId).updateChildren(taskMap)

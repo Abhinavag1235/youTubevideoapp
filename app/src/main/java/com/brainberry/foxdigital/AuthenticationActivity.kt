@@ -9,6 +9,9 @@ import android.view.WindowManager
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_authentication.*
+import android.app.Activity
+import android.view.inputmethod.InputMethodManager
+
 
 class AuthenticationActivity : AppCompatActivity() {
     private var nextActivity: Int? = null
@@ -68,6 +71,7 @@ class AuthenticationActivity : AppCompatActivity() {
     private fun authenticateUser(){
 
         flipVisiblity(false)
+        hideKeyboard(this)
 
         mAuth.signInWithEmailAndPassword(editTextUsername.text.toString(), editTextPassword.text.toString())
             .addOnCompleteListener(this) { task ->
@@ -98,5 +102,20 @@ class AuthenticationActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    /**
+     * Hide the keyboard
+     * @param activity the activity in which the keyboard has been opened
+     */
+    fun hideKeyboard(activity: Activity) {
+        val imm = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        //Find the currently focused view, so we can grab the correct window token from it.
+        var view = activity.currentFocus
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = View(activity)
+        }
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }

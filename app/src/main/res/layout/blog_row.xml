@@ -21,72 +21,83 @@
             android:background="@android:color/white">
 
         <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textViewTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:letterSpacing="-0.02"
-                android:lineSpacingExtra="5sp"
-                android:text="TextView"
-                android:textColor="@color/navy"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="title"/>
+                    android:id="@+id/textViewTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="5sp"
+                    android:text="TextView"
+                    android:textColor="@color/navy"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="title"/>
 
             <!--thumbnail-->
             <ImageView
-                android:id="@+id/imageViewItem"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:scaleType="matrix"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewTitle"/>
+                    android:id="@+id/imageViewItem"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:scaleType="matrix"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewTitle"/>
 
             <com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayerView
-                android:id="@+id/youtube_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewTitle"/>
+                    android:id="@+id/youtube_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewTitle"/>
 
             <ImageView
-                android:id="@+id/btnPlay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageViewItem"
-                app:layout_constraintEnd_toEndOf="@+id/imageViewItem"
-                app:layout_constraintStart_toStartOf="@+id/imageViewItem"
-                app:layout_constraintTop_toTopOf="@+id/imageViewItem"
-                app:srcCompat="@drawable/ic_play_button"/>
+                    android:id="@+id/btnPlay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageViewItem"
+                    app:layout_constraintEnd_toEndOf="@+id/imageViewItem"
+                    app:layout_constraintStart_toStartOf="@+id/imageViewItem"
+                    app:layout_constraintTop_toTopOf="@+id/imageViewItem"
+                    app:srcCompat="@drawable/ic_play_button"/>
         </android.support.constraint.ConstraintLayout>
+
+        <TextView
+                android:id="@+id/textViewPayout"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="payout"
+                  android:background="@drawable/payout_background"
+                  android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                  android:textColor="#8A8A8A"
+                  android:padding="10dp"
+        />
 
         <!--Video description-->
         <TextView
                 android:id="@+id/post_description"
                 android:layout_width="match_parent"
-                android:layout_height="105dp"
+                android:layout_height="wrap_content"
                 android:paddingTop="20dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-
+                android:paddingBottom="20dp"
                 android:text="@string/dummy_text"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
@@ -133,31 +144,9 @@
                 android:textStyle="italic"
                 tools:ignore="HardcodedText"
                 android:clickable="true"
-                android:focusable="true"/>
+                android:focusable="true"
+        android:layout_marginBottom="15dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Offers"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:textColor="@android:color/black"
-            android:textSize="24sp"
-            tools:ignore="HardcodedText"/>
         <!--Offer link-->
-        <TextView
-                android:id="@+id/textViewOfferLink"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="offerLink"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:textColor="@android:color/holo_blue_dark"
-                android:textSize="20sp"
-                android:layout_marginBottom="20dp"
-                android:textStyle="italic"
-                tools:ignore="HardcodedText"
-                android:clickable="true"
-                android:focusable="true"/>
     </LinearLayout>
 </android.support.v7.widget.CardView>

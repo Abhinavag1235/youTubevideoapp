@@ -72,13 +72,13 @@ public class FoxActivity extends AppCompatActivity {
                     String description = dataSnapshot.child("description").getValue().toString();
                     String link1 = dataSnapshot.child("link1").getValue().toString();
                     String link2 = dataSnapshot.child("link2").getValue().toString();
-                    String offerLink = dataSnapshot.child("offerLink").getValue().toString();
+                    String payout = dataSnapshot.child("payout").getValue().toString();
                     String thumbnailLink = dataSnapshot.child("thumbnailLink").getValue().toString();
                     String title = dataSnapshot.child("title").getValue().toString();
                     String videoId = dataSnapshot.child("videoId").getValue().toString();
 
                     // the video
-                    YoutubeVideo video = new YoutubeVideo(title, videoId, thumbnailLink, description, offerLink, link1, link2);
+                    YoutubeVideo video = new YoutubeVideo(title, videoId, thumbnailLink, description, payout, link1, link2);
 
                     mYoutubeVideo.add(video);
                     Log.d("TAG", video.getTitle());

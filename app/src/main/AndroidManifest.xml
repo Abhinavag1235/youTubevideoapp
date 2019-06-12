@@ -12,6 +12,7 @@
         <activity android:name=".DeleteVideoActivity">
         </activity>
         <activity android:name=".AddVideoActivity">
+
         </activity>
         <activity android:name=".AuthenticationActivity">
         </activity>
