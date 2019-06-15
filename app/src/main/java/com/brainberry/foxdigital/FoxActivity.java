@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.google.firebase.database.*;
@@ -31,9 +33,13 @@ public class FoxActivity extends AppCompatActivity {
     @BindView(R.id.recyclerViewFeed)
     RecyclerView recyclerViewFeed;
 
+    TextView textViewNoData;
+
     private YoutubeRecyclerAdapter mRecyclerAdapter;
     // LayoutManager for mRecyclerAdapter
     private RecyclerView.LayoutManager mLayoutManager;
+
+
 
     /**Used by onMenuItemClicked() to determine which Activity to be launched next*/
     public static final int LAUNCH_ADD_VIDEO = 0;
@@ -52,6 +58,8 @@ public class FoxActivity extends AppCompatActivity {
         /* will contain the list of YoutubeVideo objects that contain information about videos. The data is fetched
         from the Firebase database*/
         final ArrayList<YoutubeVideo> mYoutubeVideo = new ArrayList<>();
+
+        textViewNoData = findViewById(R.id.textViewNoData);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             // When data in the Firebase database changes
@@ -84,8 +92,16 @@ public class FoxActivity extends AppCompatActivity {
                     Log.d("TAG", video.getTitle());
                 }
 
-                // reloading the recycler view as the data has changed
-                mRecyclerAdapter.notifyDataSetChanged();
+                /* When the data set is empty, the recyclerView is set to GONE to ensure the app doesn't crash because
+                of an empty recyclerView. Otherwise, the recyclerView is set to VISIBLE*/
+                if(mYoutubeVideo.isEmpty()){
+                    recyclerViewFeed.setVisibility(View.GONE);
+                } else {
+                    recyclerViewFeed.setVisibility(View.VISIBLE);
+                    // reloading the recycler view as the data has changed
+                    mRecyclerAdapter.notifyDataSetChanged();
+                }
+
 
             }
 

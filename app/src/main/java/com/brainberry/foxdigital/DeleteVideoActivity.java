@@ -1,6 +1,7 @@
 package com.brainberry.foxdigital;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -32,7 +33,6 @@ public class DeleteVideoActivity extends AppCompatActivity {
     private ArrayList<Video> videoList;
     private DeleteVideoListViewAdapter adapter;
 
-    private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
 
@@ -43,7 +43,7 @@ public class DeleteVideoActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("videos");
 
         videoList = new ArrayList<>();
@@ -54,15 +54,6 @@ public class DeleteVideoActivity extends AppCompatActivity {
         adapter = new DeleteVideoListViewAdapter(this, videoList);
         deleteVideoListView.setAdapter(adapter);
 
-    }
-
-    // Only for testing purposes, remove after data is fetched from firebase
-    private void loadTestData() {
-        videoList.add(new Video("Longman", "http://i.imgur.com/DvpvklR.png", "thumbnailurl"));
-        videoList.add(new Video("Shortman", "http://i.imgur.com/DvpvklR.png", "thumbnailurl"));
-        videoList.add(new Video("Puppies", "http://i.imgur.com/DvpvklR.png", "thumbnailurl"));
-        videoList.add(new Video("Salvation", "http://i.imgur.com/DvpvklR.png", "thumbnailurl"));
-        videoList.add(new Video("Appleseed", "http://i.imgur.com/DvpvklR.png", "thumbnailurl"));
     }
 
     private class DeleteVideoListViewAdapter extends android.widget.BaseAdapter {
@@ -106,12 +97,7 @@ public class DeleteVideoActivity extends AppCompatActivity {
             textViewVideoTitle.setText(video.title);
 
             ImageView clickableImageViewDeleteButton = videoCardView.findViewById(R.id.clickableImageViewDeleteButton);
-            clickableImageViewDeleteButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View l) {
-                    buttonDeleteOnClick(video.id, position);
-                }
-            });
+            clickableImageViewDeleteButton.setOnClickListener(l -> buttonDeleteOnClick(video.id, position));
             // finished assigning data to the components of videoCardView
 
             return videoCardView;
@@ -137,7 +123,7 @@ public class DeleteVideoActivity extends AppCompatActivity {
             // delete video from the local videoList
             videoList.remove(position);
             adapter.notifyDataSetChanged();
-            deleteVideoFromFirebase(videoId);
+            DeleteVideoActivity.this.deleteVideoFromFirebase(videoId);
         });
         builder.setNegativeButton("NO", (dialog, id) -> {
             // do nothing, the AlertDialog closes automatically
@@ -187,7 +173,7 @@ public class DeleteVideoActivity extends AppCompatActivity {
         /**
          * @return thumbnail url
          */
-        public String getLink() {
+        String getLink() {
             return this.link;
         }
 
@@ -212,12 +198,6 @@ public class DeleteVideoActivity extends AppCompatActivity {
             this.id = id;
         }
 
-        /**
-         * @param link set the thumbnail url (only for testing purposes)
-         */
-        public void setLink(String link) {
-            this.link = link;
-        }
     }
 
     /**
@@ -236,6 +216,8 @@ public class DeleteVideoActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot ds) {
+
+                videoList.clear();
 
                 for (DataSnapshot dataSnapshot : ds.getChildren()) {
                     String title = dataSnapshot.child("title").getValue().toString();

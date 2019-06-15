@@ -13,7 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.pierfrancescosoffritti.youtubeplayer.player.AbstractYouTubePlayerListener;
@@ -21,12 +22,9 @@ import com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayerView;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 /**
  * This adapter is used by FoxActivity to display all the videos.
- * 
+ *
  * @author Abhinav Agarwal
  * @author Shayak Banerjee
  * @version 0.2
@@ -44,19 +42,22 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
 
     /**
      * Constructor
-     * @param context The Activity in which the recycler view exists
+     *
+     * @param context       The Activity in which the recycler view exists
      * @param youtubeVideos list of YouTube videos
      */
     YoutubeRecyclerAdapter(List<YoutubeVideo> youtubeVideos, Context context) {
         this.mYoutubeVideos = youtubeVideos;
         this.context = context;
     }
+
     //overriding onCreateViewHolder to inflate blog_row.xml file for recyclerview
     @NonNull
     @Override
     public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.blog_row, parent, false));
     }
+
     // overriding onBindViewHolder to bind the holder objects to positions
     @Override
     public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
@@ -71,6 +72,7 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
 
     /**
      * determines and returns the size of item count of the recycler view
+     *
      * @return size of arraylist to fill the recycler view
      */
     @Override
@@ -116,8 +118,11 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
 
         public void onBind(int position) {
             super.onBind(position);
+
+
             final YoutubeVideo mYoutubeVideo = mYoutubeVideos.get(position);
             //getting view's component for data displaying
+
             ((Activity) itemView.getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
             int width = displayMetrics.widthPixels;
             //setting title
@@ -131,8 +136,8 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
                         .into(imageViewItems);
             }
             // setting the payout amount : payout is not shown if it is 0
-            if(mYoutubeVideo.getPayout().equals("0")){
-               textViewPayout.setVisibility(View.GONE);
+            if (mYoutubeVideo.getPayout().equals("0")) {
+                textViewPayout.setVisibility(View.GONE);
             } else {
                 String text = "Payout Rs." + mYoutubeVideo.getPayout();
                 textViewPayout.setText(text);
@@ -196,10 +201,10 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
             String link1 = mYoutubeVideo.getLink1();
             String link2 = mYoutubeVideo.getLink2();
 
-            if(link1.length() > 33){
+            if (link1.length() > 33) {
                 link1 = link1.substring(0, 29) + "...";
             }
-            if(link2.length() > 33){
+            if (link2.length() > 33) {
                 link2 = link2.substring(0, 29) + "...";
             }
 
@@ -220,6 +225,8 @@ public class YoutubeRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder>
                 openUrl.setData(Uri.parse(mYoutubeVideo.getLink2()));
                 context.startActivity(openUrl);
             });
+
+
         }
     }
 
