@@ -1,3 +1,25 @@
 <resources>
-    <string name="app_name">YouTube Videos App</string>
+    <string name="app_name">FoxDigital</string>
+    <string name="dummy_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mini</string>
+    <string name="more">more</string>
+    <string name="add_videos">Add Videos</string>
+    <string name="enter_video_title_here">Enter video title here</string>
+    <string name="title">Title</string>
+    <string name="update">Update</string>
+    <string name="description">Description</string>
+    <string name="video_link">video link</string>
+    <string name="thumbnail">thumbnail</string>
+    <string name="thumbnail_link">thumbnail link</string>
+    <string name="link_1">link 1</string>
+    <string name="link_2">link 2</string>
+    <string name="offer_link">offerLink link</string>
+    <string name="delete_videos">Delete videos</string>
+    <string name="foxdigital_email">foxdigital@brainberry.com</string>
+    <string name="logout">logout</string>
+    <string name="group_clip_art">Group clip art</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="payout">payout</string>
+    <string name="there_is_no_data_to_display">there is no data to display</string>
 </resources>

@@ -1,45 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    app:cardCornerRadius="12dp"
-    android:elevation="90dp"
-    android:layout_margin="7dp"
-    >
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="240dp"
-    android:orientation="vertical"
-    android:background="#456458">
-    <WebView
-        android:id="@+id/videoWebView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/t"
-
-        >
-    </WebView>
-
-    <TextView
-        android:id="@+id/post_Title"
+<android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:textColor="#000000"
-        android:text="Title"
-        android:textSize="15dp"
-        android:textAlignment="center"/>
-    <TextView
-        android:id="@+id/post_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:textColor="#000000"
-        android:textSize="15dp"
-        android:textAlignment="center"
-        android:text="Description" />
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:elevation="90dp"
+        android:orientation="vertical"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="24dp">
 
-</LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@android:color/white">
+
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <TextView
+                    android:id="@+id/textViewTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="5sp"
+                    android:text="TextView"
+                    android:textColor="@color/navy"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="title"/>
+
+            <!--thumbnail-->
+            <ImageView
+                    android:id="@+id/imageViewItem"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:scaleType="matrix"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewTitle"/>
+
+            <com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayerView
+                    android:id="@+id/youtube_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewTitle"/>
+
+            <ImageView
+                    android:id="@+id/btnPlay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageViewItem"
+                    app:layout_constraintEnd_toEndOf="@+id/imageViewItem"
+                    app:layout_constraintStart_toStartOf="@+id/imageViewItem"
+                    app:layout_constraintTop_toTopOf="@+id/imageViewItem"
+                    app:srcCompat="@drawable/ic_play_button"/>
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+                android:id="@+id/textViewPayout"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="payout"
+                  android:background="@drawable/payout_background"
+                  android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                  android:textColor="#8A8A8A"
+                  android:padding="10dp"
+        />
+
+        <!--Video description-->
+        <TextView
+                android:id="@+id/post_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="20dp"
+                android:text="@string/dummy_text"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:maxLines="4"/>
+
+        <!--Opens description in a pop up. It will be visible only
+        if the number of characters is >= 150-->
+        <TextView
+                android:id="@+id/clickableTextViewMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/more"
+                android:layout_gravity="center"
+                android:textSize="12sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="invisible"/>
+
+        <TextView
+                android:id="@+id/textViewLink1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="link 1"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                tools:ignore="HardcodedText"
+                android:clickable="true"
+                android:focusable="true"/>
+
+        <TextView
+                android:id="@+id/link2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="link 2"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                tools:ignore="HardcodedText"
+                android:clickable="true"
+                android:focusable="true"
+        android:layout_marginBottom="15dp"/>
+
+    </LinearLayout>
 </android.support.v7.widget.CardView>

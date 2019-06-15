@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#FF5722</color>
+    <!--dark orange-->
+    <!--<color name="colorPrimaryDark">#AD3A12</color>-->
+    <!--foxdigital gray-->
+    <color name="colorPrimaryDark">#7C7C7C</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="navy">#021430</color>
 </resources>

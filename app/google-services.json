@@ -1,50 +1,42 @@
 {
   "project_info": {
-    "project_number": "739573891245",
-    "firebase_url": "https://foxdigital-d677b.firebaseio.com",
-    "project_id": "foxdigital-d677b",
-    "storage_bucket": "foxdigital-d677b.appspot.com"
+    "project_number": "947118024946",
+    "firebase_url": "https://foxdigital-785d5.firebaseio.com",
+    "project_id": "foxdigital-785d5",
+    "storage_bucket": "foxdigital-785d5.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:739573891245:android:a277d164049aaf88",
+        "mobilesdk_app_id": "1:947118024946:android:b6e5c299eb5f8639",
         "android_client_info": {
-          "package_name": "com.app.toyo.youtubevideosapp"
+          "package_name": "com.brainberry.foxdigital"
         }
       },
       "oauth_client": [
         {
-          "client_id": "739573891245-4qdv0dtamlksfsb8u7u4ls59n4i4ear7.apps.googleusercontent.com",
+          "client_id": "947118024946-hh79ur5uq73k7fh22bfpp9c4g91dohte.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.app.toyo.youtubevideosapp",
-            "certificate_hash": "f01f6016418863b4909dc87bad30b6ca09f7b174"
+            "package_name": "com.brainberry.foxdigital",
+            "certificate_hash": "0afd1ca9f980b9cfaccfa92175befd1a3c2799d7"
           }
         },
         {
-          "client_id": "739573891245-fssn73vu10crvp8hou0mkm5ebh8tpbf2.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.app.toyo.youtubevideosapp",
-            "certificate_hash": "b73a3a1a16acc7b6078bac267dfb414270a96c92"
-          }
-        },
-        {
-          "client_id": "739573891245-oqe6iimn60idru74e17389qdp06btrdg.apps.googleusercontent.com",
+          "client_id": "947118024946-3ukq1cl29jqre4koc51devbi1eg567sc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA1UKIlePtax5sMsPq2caPuYgS8Q-brWAI"
+          "current_key": "AIzaSyATiuAnoWB6aTJ_f6Xm2kszztZtItQRxd4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "739573891245-oqe6iimn60idru74e17389qdp06btrdg.apps.googleusercontent.com",
+              "client_id": "947118024946-3ukq1cl29jqre4koc51devbi1eg567sc.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
